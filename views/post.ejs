@@ -1,0 +1,38 @@
+<!-- Main container: blog posts -->
+<div class="post-main-container">
+
+    <section class="blog-post section-header-offset">
+
+    </section>
+
+    <div class="blog-post-container container">
+
+        <div class="blog-post-data">
+            
+            <h3 class="title blog-post-title"><%= data.title %></h3>
+
+            <div class="article-data">
+                <span><%= data.createdAt.toDateString() %></span>
+                <span class="article-data-seperator">&#9670;</span>
+                <span><%= data.topic %></span>
+            </div>
+            <img src="/images/test_gelato.jpg" alt="">
+        </div>
+
+        <div class="container">
+            <p><%= data.body %></p>
+
+            <blockquote class="quote">
+                <p>
+                    <span><i class="ri-double-quotes-l"></i></span> 
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    <span><i class="ri-double-quotes-r"></i></span> 
+                </p>
+            </blockquote>
+
+        </div>
+
+    </div>
+
+
+</div>

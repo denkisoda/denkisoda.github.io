@@ -1,0 +1,126 @@
+<!-- Main container: blog posts, profile, tag section -->
+<div class="main-container">
+
+    <!-- Tag list -->
+    <div class="tag-list-container">
+
+        <div class="tag-list-title">
+            <p class="section-logo">🔖</p>
+            <p class="section-title">Tags</p>
+        </div>
+
+        <div class="hashtag-container" id="menu">
+            <ul class="hashtag-list">
+                <li class="hashtag-list-item">
+                    <a href="" class="hashtag-link text-link">Anime</a>
+                </li>
+                <li class="hashtag-list-item">
+                    <a href="" class="hashtag-link text-link">Manga</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Blog posts -->
+    <div class="blog-container">
+
+        <p class="section-title">📂 Blog Posts</p>
+
+        <div class="blog-card-group">
+
+            <!-- Fetch blog post data -->
+            <% data.forEach(post => { %>
+
+                <div class="blog-card">
+
+                    <button class="blog-topic i">Anime</button>
+
+                    <div class="blog-card-banner">
+                        <img src="images/test_gelato.jpg" alt="Test Gelato" class="blog-card-img">
+                    </div>
+
+                    <div class="blog-card-content">
+
+                        <div class="blog-title text-link">
+                            <a href="/post/<%= post._id %>">
+                                    <%= post.title %>
+                                </a>
+                        </div>
+
+                        <!-- Show summary of blog, if no summary show top N words -->
+                        <p class="blog-text">
+                            <% if (post.desc) { %>
+                                <%= post.desc %>
+                            <% } else { %>
+                                <% const summary = post.body.split(' ').slice(0, 10).join(' ') %>
+                                <%= summary %>...
+                            <% } %>
+                        </p>
+
+                        <div class="blog-info">
+                            <p class="blog-info-text">
+                            <time datetime><%= post.createdAt.toDateString() %></time>
+                            <span class="separator"></span>
+                            <i class="ri-time-line clock-icon"></i>
+                            
+                            <!-- Calculate read time  -->
+                            <% const readSpeed = 200 %>
+                            <% const postWordCount = post.body.split(/\s+/).length %>
+                            <% const readTimeMinutes = Math.ceil(postWordCount / readSpeed) %>
+                            <time datetime="PT3M"><%= readTimeMinutes %> min</time>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            <% }) %>
+
+        </div>
+
+        <button class="btn load-more">Load More</button>
+
+    </div>
+
+    
+    <!-- Side bar -->
+    <div class="sidebar-container">
+
+        <div class="profile-container">
+            
+            <div class="profile-title">
+                <p class="section-title">🍶 About</p>
+            </div>
+
+            <div class="profile-card">
+
+                <div class="profile-img-container">
+                    <img src="images/profile.png" alt="denkisoda's profile picture" class="profile-img">
+                </div>
+                
+                <div class="profile-text">
+                    <h4 class="profile-name">Denki Soda</h4>
+
+                    <p class="profile-intro">
+                        I like anime.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="contact-container">
+
+        </div>
+
+    </div>
+
+    <!-- Top top button  -->
+    <div id="toTopButton" class="hidden">
+        <i class="ri-arrow-up-double-line" onclick="scrollToTop()"></i>
+    </div>
+
+</div>

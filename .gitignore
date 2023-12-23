@@ -1,0 +1,11 @@
+# moduels
+node_modules/
+
+# env
+.env
+
+# ide 
+.vscode/
+
+# test code 
+test/

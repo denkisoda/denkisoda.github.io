@@ -1,1 +1,0 @@
-# denkisoda.github.io

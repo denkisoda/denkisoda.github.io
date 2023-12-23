@@ -1,0 +1,66 @@
+@import "main.css";
+
+.post-main-container{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 10%;
+}
+
+.blog-post-data h3{
+    font-size: var(--font-size-lg);
+}
+
+.blog-post-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 1.5rem;
+}
+
+.blog-post-title{
+    font-size: clamp(3rem, 5vw, 6rem); /* font-size respond to viewport width */
+}
+
+.blog-post-data .article-data{
+    margin-bottom: 2.5rem;
+}
+
+.blog-post-data img{
+    width: 100%;
+    height: var(--item-min-height-sm);
+    object-fit: cover;
+    object-position: center 10%;
+}
+
+.blog-post-container .container{
+    max-width: 120rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.quote{
+    background-color: var(--secondary-background-color);
+    padding: 2.5rem;
+}
+
+.quote p{
+    font-style: italic;
+}
+
+.quote span i{
+    font-size: 3rem;
+}
+
+.article-data-seperator{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.article:hover .article-data-seperator{
+    background-color: var(--hover-highlight-color);
+}
+
+/* media queries */

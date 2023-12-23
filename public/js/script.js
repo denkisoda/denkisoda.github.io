@@ -1,0 +1,83 @@
+// Grab elements
+const selectElement = selector => {
+    const element = document.querySelector(selector)
+    if(element) return element;
+    throw new Error(`Error: ${selector} does not exist.`)
+};
+
+//Nav styles on scroll
+const scrollHeader = () => {
+    const headerElement = selectElement('#header');
+    if(this.scrollY >= 15){
+        headerElement.classList.add('activated');
+    }else{
+        headerElement.classList.remove('activated');
+    }
+};
+
+window.addEventListener('scroll', scrollHeader);
+
+// Open menu
+const menuToggleIcon = selectElement('#menu-toggle-icon');
+
+const toggleMenu = () => {
+    const mobileMenu = selectElement('#menu');
+    mobileMenu.classList.toggle('activated');
+    menuToggleIcon.classList.toggle('activated');
+};
+
+menuToggleIcon.addEventListener('click', toggleMenu);
+
+// Open/Close search form popup
+const searchOpenBtn = selectElement('#search-icon-btn')
+const searchCloseBtn = selectElement('#search-close-btn')
+const searchFormContainer = selectElement('#search-form-container')
+
+searchOpenBtn.addEventListener('click', () => {
+    searchFormContainer.classList.add('activated');
+    document.getElementById("search-input").focus();
+});
+searchCloseBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    searchFormContainer.classList.remove('activated');
+});
+
+// Close the search form popup on ESC keypress
+window.addEventListener('keyup', event => {
+    if(event.key === 'Escape') searchFormContainer.classList.remove('activated');
+});
+
+// Switch theme/add to local storage
+const bodyElement = document.body;
+const themeToggleBtn = selectElement('#theme-toggle-btn');
+const currentTheme = localStorage.getItem('currentTheme');
+
+if(currentTheme){
+    bodyElement.classList.add('light-theme')
+}
+
+themeToggleBtn.addEventListener('click', () => {
+    bodyElement.classList.toggle('light-theme');
+
+    if(bodyElement.classList.contains('light-theme')){
+        localStorage.setItem('currentTheme', 'themeActive');
+    }else{
+        localStorage.removeItem('currentTheme');
+    }
+})
+
+// Show ToTopButton upon scroll 
+const toTopButton = document.getElementById('toTopButton');
+
+window.onscroll = () => {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        toTopButton.classList.add('show');
+    } else {
+        toTopButton.classList.remove('show');
+    }
+    };
+  
+function scrollToTop() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+}
